@@ -1,0 +1,18 @@
+{
+  "name": "koma",
+  "owner": {
+    "name": "KOMA",
+    "url": "https://koma.im"
+  },
+  "plugins": [
+    {
+      "name": "koma",
+      "source": "./",
+      "description": "Work with KOMA from Claude: read and change tasks in your projects, plus the platform's vocabulary.",
+      "author": {
+        "name": "KOMA",
+        "url": "https://koma.im"
+      }
+    }
+  ]
+}
