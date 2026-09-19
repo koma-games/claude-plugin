@@ -14,8 +14,9 @@ Then install **koma** from the marketplace that appears.
 
 ## What is in it today
 
-**One skill**, teaching Claude the platform's vocabulary and how to answer questions about your
-projects and tasks well.
+**Two skills**: one for the board, teaching Claude how to read and answer questions about your
+projects and tasks well, and one for the platform itself, its products and how anything written for
+it is spelled.
 
 **Eleven tools**: list your projects, read what you are working on, read a project's whole board,
 create and change and move and comment on an issue, read its history, and send one to the trash or
