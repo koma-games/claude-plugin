@@ -1,12 +1,13 @@
 ---
 name: studio
-description: Use when the user asks about tasks, projects, bugs, the board, cycles, labels or what they are working on in KOMA Studio, or wants an issue created, reassigned, prioritised, moved, commented on, deleted or restored.
+description: Use when the user asks about tasks, projects, bugs, the board, cycles, labels or what they are working on in KOMA Studio, or wants an issue created, reassigned, prioritised, moved, commented on, deleted or restored. Also when they ask about a project's files, want one found, opened, read, summarised or compared, or refer to a document, screenshot, spreadsheet or asset that lives in a project.
 ---
 
 # KOMA Studio
 
-The task tracker of a small game studio, and the eleven tools that reach it. What the studio is
-part of, and how to write for it, is the `koma` skill; this one is the board.
+The task tracker of a small game studio and the files kept beside it, and the thirteen tools that
+reach them. What the studio is part of, and how to write for it, is the `koma` skill; this one is
+the board and the files.
 
 ## Start with the board, not with a guess
 
@@ -83,6 +84,32 @@ and the answer is usually in the last two entries.
 still, or `in_progress` with no recent activity. Say which of the two you looked at.
 
 Report keys, not uuids. A person recognises `SNN-42` and has never seen the id.
+
+## Files
+
+A project with Storage enabled has a file tree of its own: folders and files, the same tree the
+Files page shows. Two tools read it and neither writes.
+
+**`list_files` shows one folder.** Without `folderId` it is the root. Every answer also carries the
+whole folder tree of the project, so a path somebody names ("the docs folder, then design") is
+found by reading that tree once, not by listing folder after folder. The listing gives each file's
+id, name, size and type; it does not give the contents.
+
+**`read_file` takes a file id** from a listing, never a name or a path. So "read the design doc" is
+`list_files`, find it, then `read_file` with its id, the same two steps as a task key.
+
+- **Text comes back as text**, including files stored as a generic binary type, because what
+  decides is whether the bytes are text. A long file comes 100 KB at a time, and the answer ends
+  with the offset to pass for the next part. Read on only as far as the question needs.
+- **A PNG, JPEG, GIF or WebP comes back as an image** you can look at: a screenshot attached to a
+  bug, concept art, a chart. Say what you see in it rather than only that it is there.
+- **Anything else** (an archive, a build, a model, a video) comes back as a description with a link
+  the person can open it at. Pass the link on; do not guess at what is inside.
+
+A project without Storage answers `Project not found` from these tools while its board still
+works. That is the feature being off for that project, not the project missing.
+
+Report files by name and folder, the way a person sees them, not by id.
 
 ## What a connected application may do here
 
